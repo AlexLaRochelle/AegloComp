@@ -26,7 +26,7 @@ if __name__ == '__main__':
         entrepotProductsEntry = challenge_file.readline().split(' ')
         entrepotProductsEntry = [int(numeric_string) for numeric_string in entrepotProductsEntry]
 
-        entrepots.append(Entrepot(Position(int(entrepotPosEntry[0]), int(entrepotPosEntry[1])), entrepotProductsEntry))
+        entrepots.append(Entrepot(Position(int(entrepotPosEntry[0]), int(entrepotPosEntry[1])), entrepotProductsEntry, entrepotId))
 
     drones = []
     for i in range(int(setup_numbers[2])):
@@ -43,4 +43,8 @@ if __name__ == '__main__':
 
         commandes.append(Commande(Position(int(commandePosEntry[0]), int(commandePosEntry[1])), commandeAllProducts))
 
-    solutionMaker = SolutionMaker(grid, products_weights, entrepots, commandes, drones)
+    solutionMaker = SolutionMaker(grid, products_weights, entrepots, commandes, drones, int(setup_numbers[3]))
+
+    slnFile = open('sln', 'w')
+
+

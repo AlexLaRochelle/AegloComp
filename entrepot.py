@@ -2,9 +2,10 @@ from position import Position
 
 
 class Entrepot:
-    def __init__(self, pos: Position, products):
+    def __init__(self, pos: Position, products: [int], entrepot_id: int):
         self.pos = pos
         self.products = products
+        self.entrepot_id = entrepot_id
 
     def __str__(self):
         return 'Pos: ' + str(self.pos) + '\nProducts: ' + str(self.products) + '\n'
