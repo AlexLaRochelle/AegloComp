@@ -1,3 +1,4 @@
+import math
 from math import sqrt
 
 from entrepot import Entrepot
@@ -24,3 +25,19 @@ class Grid:
             print("SOMETHING VERY BAD HAPPENED")
 
         return best_entrepot_id, best_distance
+
+    def findClosest(self, posToCheck, pos2: Position):
+        best_distance = 9999999
+        best_position = Position(0, 0)
+
+        for pos in posToCheck:
+            distance = pos2.distanceTo(pos)
+
+            if distance < best_distance:
+                best_distance = distance
+                best_position = pos
+
+        if best_distance == 9999999:
+            return None, None
+
+        return best_position, math.ceil(best_distance)
