@@ -1,15 +1,12 @@
 from commande import Commande
+from drone import Drone
 from entrepot import Entrepot
 from grid import Grid
 from position import Position
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
 # Press the green button in the gutter to run the script.
+from solutionMaker import SolutionMaker
+
 if __name__ == '__main__':
     challenge_file = open('maps/busy_day.in', 'r')
 
@@ -20,7 +17,6 @@ if __name__ == '__main__':
     productAmount = challenge_file.readline()
     products_weights = challenge_file.readline().split(' ')
     products_weights = [int(numeric_string) for numeric_string in products_weights]
-    #print(products)
 
     entrepotsAmount = int(challenge_file.readline())
     entrepots = []
@@ -32,8 +28,9 @@ if __name__ == '__main__':
 
         entrepots.append(Entrepot(Position(int(entrepotPosEntry[0]), int(entrepotPosEntry[1])), entrepotProductsEntry))
 
-
-    #print(entrepots)
+    drones = []
+    for i in range(int(setup_numbers[2])):
+        drones.append(Drone(setup_numbers[4], entrepots[0].pos))
 
     commandesAmount = int(challenge_file.readline())
     commandes = []
@@ -46,6 +43,4 @@ if __name__ == '__main__':
 
         commandes.append(Commande(Position(int(commandePosEntry[0]), int(commandePosEntry[1])), commandeAllProducts))
 
-    #print(commandes)
-
-
+    solutionMaker = SolutionMaker(grid, products_weights, entrepots, commandes, drones)

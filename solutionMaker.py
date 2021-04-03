@@ -4,7 +4,7 @@ from grid import Grid
 
 
 class SolutionMaker:
-    def __init__(self, grid: Grid, products_weights: [int], entrepots: [Entrepot], commandes: [Commande]):
+    def __init__(self, grid: Grid, products_weights: [int], entrepots: [Entrepot], commandes: [Commande], drones: [Drone]):
         self.grid = grid
         self.products_weights = products_weights
         self.entrepots = entrepots
