@@ -2,6 +2,7 @@ from position import Position
 
 
 class Drone:
-    def __init__(self, max_weight, pos: Position):
+    def __init__(self, max_weight, pos: Position, id):
         self.pos = pos
         self.max_weight = max_weight
+        self.id = id
