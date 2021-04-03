@@ -12,9 +12,10 @@ class DroneState(enum.Enum):
 
 
 class Drone:
-    def __init__(self, max_weight, pos: Position):
+    def __init__(self, max_weight, pos: Position, id):
         self.pos = pos
         self.max_weight = max_weight
+        self.id = id
         self.current_weight = 0
         self.state = DroneState.TRAVELING_TO_ENTREPOT
         self.entrepot_id_going = 0

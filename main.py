@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     drones = []
     for i in range(int(setup_numbers[2])):
-        drones.append(Drone(setup_numbers[4], entrepots[0].pos))
+        drones.append(Drone(setup_numbers[4], entrepots[0].pos, i))
 
     commandesAmount = int(challenge_file.readline())
     commandes = []
