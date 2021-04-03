@@ -8,8 +8,8 @@ class Position:
 
     def distanceTo(self, otherPos):
         return ceil(
-            sqrt(pow(abs(otherPos.pos.x - self.x), 2)) +
-            sqrt(pow(abs(otherPos.pos.y - self.y), 2)))
+            sqrt(pow(abs(otherPos.x - self.x), 2)) +
+            sqrt(pow(abs(otherPos.y - self.y), 2)))
 
     def __str__(self):
         return "(" + str(self.x) + "," + str(self.y) + ")"

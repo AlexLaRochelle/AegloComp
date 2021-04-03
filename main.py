@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     drones = []
     for i in range(int(setup_numbers[2])):
-        drones.append(Drone(setup_numbers[4], entrepots[0].pos, i))
+        drones.append(Drone(int(setup_numbers[4]), entrepots[0].pos, i))
 
     commandesAmount = int(challenge_file.readline())
     commandes = []
@@ -44,7 +44,6 @@ if __name__ == '__main__':
         commandes.append(Commande(Position(int(commandePosEntry[0]), int(commandePosEntry[1])), commandeAllProducts))
 
     solutionMaker = SolutionMaker(grid, products_weights, entrepots, commandes, drones, int(setup_numbers[3]))
-
-    slnFile = open('sln', 'w')
+    solutionMaker.makeSolution()
 
 

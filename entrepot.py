@@ -6,6 +6,7 @@ class Entrepot:
         self.pos = pos
         self.products = products
         self.entrepot_id = entrepot_id
+        self.utile = True
 
     def __str__(self):
         return 'Pos: ' + str(self.pos) + '\nProducts: ' + str(self.products) + '\n'
