@@ -118,6 +118,9 @@ class SolutionMaker:
                                 for destination in self.products_dict[product_id]['destinations']:
                                     total_products_needed += self.products_dict[product_id]['destinations'][destination]
 
+                                if total_products_needed == 0:
+                                    self.products_dict.pop(product_id)
+
                                 last_best_pos = drone.pos
                                 while drone.current_weight + product_weight <= drone.max_weight:
 
@@ -152,8 +155,8 @@ class SolutionMaker:
                                 self.issueOrderLoad(drone.id, drone.entrepot_id_going, product_id, len(drone.carrying))
                                 break
                         if len(drone.carrying) == 0:
-                            drone.state = DroneState.ACTION_DROPPING
-                            print("SOMEONE ROBBED ME FUCK")
+                            drone.state = DroneState.NOTHING
+                            #print("SOMEONE ROBBED ME FUCK")
 
                     else:
                         drone.turns_to_destination -= 1
@@ -292,9 +295,16 @@ class SolutionMaker:
                             for product_id, product_amount in enumerate(self.entrepots[entrepot_id].products):
                                 if product_id in self.products_dict and len(
                                         self.products_dict[product_id]['destinations'].keys()) > 0:
-                                    entrepot_id_to_go_to = entrepot_id
-                                    drone.entrepot_id_going = entrepot_id
-                                    drone.turns_to_destination = distance
+                                    total_products_needed = 0
+                                    for destination in self.products_dict[product_id][DESTINATIONS_KEY].values():
+                                        total_products_needed += destination
+
+                                    if total_products_needed <= 0:
+                                        self.entrepots[entrepot_id].utile = False
+                                    else:
+                                        entrepot_id_to_go_to = entrepot_id
+                                        drone.entrepot_id_going = entrepot_id
+                                        drone.turns_to_destination = distance
 
                             if entrepot_id_to_go_to == -1:
                                 self.entrepots[entrepot_id].utile = False
